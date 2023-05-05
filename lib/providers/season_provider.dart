@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/season.dart';
 import 'package:frontend/services/season_service.dart';
-import 'package:frontend/services/trip_service.dart';
 
 class SeasonProvider extends ChangeNotifier {
   final service = SeasonService();
 
-  List<Season> _season = [];
-  List<Season> get season => _season;
+  List<Season> _seasons = [];
+  List<Season> get seasons => _seasons;
   set trips(List<Season> value) {
-    _season = value;
+    _seasons = value;
     notifyListeners();
   }
 
-  List<Season> _filteredTrips = [];
-  List<Season> get filteredTrips => _filteredTrips;
-  set filteredTrips(List<Season> filteredTrips) {
-    _filteredTrips = filteredTrips;
+  List<Season> _filteredSeasons = [];
+  List<Season> get filteredSeasons => _filteredSeasons;
+  set filteredTrips(List<Season> filteredSeasons) {
+    _filteredSeasons = filteredSeasons;
     notifyListeners();
   }
 
   Future<void> getSeasons(String? token) async {
     try {
-      _season = await service.getSeasons(token);
-      _filteredTrips = _season;
+      _seasons = await service.getSeasons(token);
+      _filteredSeasons = _seasons;
       return;
     } catch (e) {
       throw Exception('Failed to load data');
@@ -31,8 +30,8 @@ class SeasonProvider extends ChangeNotifier {
   }
 
   void resetData() {
-    _season = [];
-    _filteredTrips = [];
+    _seasons = [];
+    _filteredSeasons = [];
     notifyListeners();
   }
 }

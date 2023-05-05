@@ -52,6 +52,7 @@ class _TripListScreenState extends State<TripListScreen> {
               setState(() {
                 isLoading.value = true;
               });
+
               await tripProvider.getTrips(widget.token);
               setState(() {
                 isLoading.value = false;
@@ -142,6 +143,8 @@ class TripCard extends StatelessWidget {
                 SizedBox(height: 8),
                 Text(
                   trip.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -149,6 +152,8 @@ class TripCard extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   'Place: ${trip.destination.name}',
                   style: TextStyle(
                     color: Colors.white,
