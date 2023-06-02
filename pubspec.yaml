@@ -40,6 +40,10 @@ dependencies:
   dropdown_search: ^5.0.6
   flutter_stripe: ^5.0.0
   flutter_dotenv: ^5.0.2
+  google_maps_flutter: ^2.0.6
+  firebase_core: ^2.13.1
+  firebase_database: ^10.2.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

@@ -1,16 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/providers/auth_provider.dart';
 import 'package:frontend/providers/destination_provider.dart';
 import 'package:frontend/providers/season_provider.dart';
 import 'package:frontend/providers/trip_provider.dart';
-import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/login_screen.dart';
 import 'package:frontend/screens/payment_screen.dart';
 import 'package:frontend/screens/register_screen.dart';
-import 'package:frontend/screens/trips/trip_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +19,10 @@ void main() async{
 
   await dotenv.load(fileName: "assets/.env");
   
+  
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<AuthenticationProvider>(
@@ -35,12 +39,9 @@ void main() async{
 
 Map<String, WidgetBuilder> _getRoutes() {
   return {
-    '/': (context) => const MyHomePage(),
     '/signin': (context) => const LoginScreen(),
     '/signup': (context) => const RegisterScreen(),
-    '/trip': (context) => const TripScreen(),
     '/payment':(context) => const PaymentScreen(),
-    //'/filter': (context) => const FilterScreen(),
   };
 }
 
@@ -56,7 +57,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.red),
       initialRoute: '/signin',
       routes: _getRoutes(),
-      // home: const LoginScreen(),
     );
   }
 }

@@ -29,10 +29,10 @@ class MyHomePage extends StatelessWidget {
             ),
             TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const PaymentScreen()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => const TripScreen()),
+                  // );
                 },
                 child: Text("trips"))
           ],
