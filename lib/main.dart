@@ -5,11 +5,20 @@ import 'package:frontend/providers/season_provider.dart';
 import 'package:frontend/providers/trip_provider.dart';
 import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/login_screen.dart';
+import 'package:frontend/screens/payment_screen.dart';
 import 'package:frontend/screens/register_screen.dart';
 import 'package:frontend/screens/trips/trip_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Stripe.publishableKey = "pk_test_51NEOG0BCaaBopW0JuSz4FUfcLLCJ4jSJw4xEn1EihJEwzVff4e19mGmo8dMnS9WeUxEFb8sSIoxnEeKrsfNT1YSN002vyYOYkQ";
+
+  await dotenv.load(fileName: "assets/.env");
+  
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<AuthenticationProvider>(
@@ -30,6 +39,7 @@ Map<String, WidgetBuilder> _getRoutes() {
     '/signin': (context) => const LoginScreen(),
     '/signup': (context) => const RegisterScreen(),
     '/trip': (context) => const TripScreen(),
+    '/payment':(context) => const PaymentScreen(),
     //'/filter': (context) => const FilterScreen(),
   };
 }

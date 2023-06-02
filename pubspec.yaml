@@ -38,6 +38,8 @@ dependencies:
   http: ^0.13.5
   provider: ^6.0.5
   dropdown_search: ^5.0.6
+  flutter_stripe: ^5.0.0
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/logo.png
+    - assets/.env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

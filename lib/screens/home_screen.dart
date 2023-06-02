@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:frontend/providers/auth_provider.dart';
+import 'package:frontend/screens/payment_screen.dart';
 import 'package:frontend/screens/trips/trip_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const TripScreen()),
+                    MaterialPageRoute(builder: (context) => const PaymentScreen()),
                   );
                 },
                 child: Text("trips"))
