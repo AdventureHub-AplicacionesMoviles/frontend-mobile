@@ -62,7 +62,7 @@ class _ChatConversationScreenState extends State<ChatConversationScreen> {
   String formatTimestampToHour(int timestamp) {
     var dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
     var formatter = DateFormat('HH:mm');
-    return formatter.format(dateTime);
+    return formatter.format(dateTime.subtract(const Duration(hours: 5)));
   }
 
   @override
